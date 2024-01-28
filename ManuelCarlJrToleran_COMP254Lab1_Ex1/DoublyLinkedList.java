@@ -142,6 +142,7 @@ public class DoublyLinkedList<E> {
     size--;
     return node.getElement();
   }
+  
   public static <E> DoublyLinkedList<E> connectDoublyLinkedLists(DoublyLinkedList<E> L, DoublyLinkedList<E> M){
     L.trailer.getPrev().setNext(M.header.getNext()); //point the last node of L to first node of M
     M.header.getNext().setPrev(L.trailer.getPrev()); //point first node of M to last node of L
