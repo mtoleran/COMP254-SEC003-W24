@@ -30,69 +30,6 @@
  */
 public class DoublyLinkedList<E> {
 
-  //---------------- nested Node class ----------------
-  /**
-   * Node of a doubly linked list, which stores a reference to its
-   * element and to both the previous and next node in the list.
-   */
-  private static class Node<E> {
-
-    /** The element stored at this node */
-    private E element;               // reference to the element stored at this node
-
-    /** A reference to the preceding node in the list */
-    private Node<E> prev;            // reference to the previous node in the list
-
-    /** A reference to the subsequent node in the list */
-    private Node<E> next;            // reference to the subsequent node in the list
-
-    /**
-     * Creates a node with the given element and next node.
-     *
-     * @param e  the element to be stored
-     * @param p  reference to a node that should precede the new node
-     * @param n  reference to a node that should follow the new node
-     */
-    public Node(E e, Node<E> p, Node<E> n) {
-      element = e;
-      prev = p;
-      next = n;
-    }
-
-    // public accessor methods
-    /**
-     * Returns the element stored at the node.
-     * @return the element stored at the node
-     */
-    public E getElement() { return element; }
-
-    /**
-     * Returns the node that precedes this one (or null if no such node).
-     * @return the preceding node
-     */
-    public Node<E> getPrev() { return prev; }
-
-    /**
-     * Returns the node that follows this one (or null if no such node).
-     * @return the following node
-     */
-    public Node<E> getNext() { return next; }
-
-    // Update methods
-    /**
-     * Sets the node's previous reference to point to Node n.
-     * @param p    the node that should precede this one
-     */
-    public void setPrev(Node<E> p) { prev = p; }
-
-    /**
-     * Sets the node's next reference to point to Node n.
-     * @param n    the node that should follow this one
-     */
-    public void setNext(Node<E> n) { next = n; }
-    
-  } //----------- end of nested Node class -----------
-
   // instance variables of the DoublyLinkedList
   /** Sentinel node at the beginning of the list */
   private Node<E> header;                    // header sentinel
@@ -205,6 +142,17 @@ public class DoublyLinkedList<E> {
     size--;
     return node.getElement();
   }
+  public static <E> DoublyLinkedList<E> connectDoublyLinkedLists(DoublyLinkedList<E> L, DoublyLinkedList<E> M){
+    L.trailer.getPrev().setNext(M.header.getNext()); //point the last node of L to first node of M
+    M.header.getNext().setPrev(L.trailer.getPrev()); //point first node of M to last node of L
+    L.trailer.setPrev(M.trailer.getPrev()); //point the trailer node of L to last node of M
+    M.trailer.getPrev().setNext(L.trailer); //point last node of M to trailer node of L
+    M.header.setNext(null); //point header node of M to null;
+    M.trailer.setPrev(null); //point trailer node of M to null;
+    L.size += M.size(); //update size of L by adding size of M
+
+    return L;
+  }
 
   /**
    * Produces a string representation of the contents of the list.
@@ -221,37 +169,6 @@ public class DoublyLinkedList<E> {
     }
     sb.append(")");
     return sb.toString();
-  }
-
-
-//main method
-  public static void main(String[] args)
-  {
-    DoublyLinkedList<String> L = new DoublyLinkedList<String>();
-    DoublyLinkedList<String> M = new DoublyLinkedList<String>();
-
-    L.addFirst("Cat");
-    L.addLast("Dog");
-
-    M.addFirst("Giraffe");
-    M.addLast("Lion");
-
-    System.out.println("L: "+ L);
-    System.out.println("M: "+ M);
-    L = connectDoublyLinkedLists(L, M);
-    System.out.println("L + M: " + L + " Size: " + L.size());
-  }
-
-  public static <E> DoublyLinkedList<E> connectDoublyLinkedLists(DoublyLinkedList<E> L, DoublyLinkedList<E> M){
-    L.trailer.getPrev().setNext(M.header.getNext()); //point the last node of L to first node of M
-    M.header.getNext().setPrev(L.trailer.getPrev()); //point first node of M to last node of L
-    L.trailer.setPrev(M.trailer.getPrev()); //point the trailer node of L to last node of M
-    M.trailer.getPrev().setNext(L.trailer); //point last node of M to trailer node of L
-    M.header.setNext(null); //point header node of M to null;
-    M.trailer.setPrev(null); //point trailer node of M to null;
-    L.size += M.size(); //update size of L by adding size of M
-
-    return L;
   }
 
 } //----------- end of DoublyLinkedList class -----------
