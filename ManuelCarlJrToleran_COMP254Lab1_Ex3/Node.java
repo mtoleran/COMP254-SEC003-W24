@@ -36,4 +36,4 @@ public class Node<E> {
      * @param n    the node that should follow this one
      */
     public void setNext(Node<E> n) { next = n; }
-} //----------- end of nested Node class -----------
+}
