@@ -110,7 +110,7 @@ class PrefixAverage {
       prefixAverage1(currentArray);
       long endTime = System.currentTimeMillis();
       long elapsed = endTime - startTime;
-      System.out.println("Array of " + currentArray.length + " took " + elapsed + " milliseconds");
+      System.out.println("Array of " + currentArray.length + " elements took " + elapsed + " milliseconds");
     }
 
   }
