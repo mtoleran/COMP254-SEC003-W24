@@ -69,19 +69,19 @@ class PrefixAverage {
 
     // Populate arrays
     for (int i = 0; i < 100000; i++) {
-      arrayOf100k[i] = (double) Math.pow(i, 2);
+      arrayOf100k[i] = Math.pow(i, 2);
     }
     for (int i = 0; i < 200000; i++) {
-      arrayOf200k[i] = (double) Math.pow(i, 2);
+      arrayOf200k[i] = Math.pow(i, 2);
     }
     for (int i = 0; i < 400000; i++) {
-      arrayOf400k[i] = (double) Math.pow(i, 2);
+      arrayOf400k[i] = Math.pow(i, 2);
     }
     for (int i = 0; i < 800000; i++) {
-      arrayOf800k[i] = (double) Math.pow(i, 2);
+      arrayOf800k[i] = Math.pow(i, 2);
     }
     for (int i = 0; i < 1600000; i++) {
-      arrayOf1mplus[i] = (double) Math.pow(i, 2);
+      arrayOf1mplus[i] = Math.pow(i, 2);
     }
 
     // Add the arrays to the ArrayList
