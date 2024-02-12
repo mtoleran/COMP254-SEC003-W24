@@ -94,8 +94,8 @@ class PrefixAverage {
     // Testing prefixAverage2
     System.out.println("Testing prefixAverage2...");
     for (int t=0; t < 5; t++) {
-      long startTime = System.currentTimeMillis();
       double[] currentArray = arrays.get(t);
+      long startTime = System.currentTimeMillis();
       prefixAverage2(currentArray);
       long endTime = System.currentTimeMillis();
       long elapsed = endTime - startTime;
@@ -105,8 +105,8 @@ class PrefixAverage {
     // Testing prefixAverage1
     System.out.println("\nTesting prefixAverage1...");
     for (int t=0; t < 5; t++) {
-      long startTime = System.currentTimeMillis();
       double[] currentArray = arrays.get(t);
+      long startTime = System.currentTimeMillis();
       prefixAverage1(currentArray);
       long endTime = System.currentTimeMillis();
       long elapsed = endTime - startTime;
